@@ -1,0 +1,55 @@
+body {
+  background-color: rgb(226, 191, 217);
+  font-family: "helvetica neue";
+  display: flex;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+}
+.analog-clock {
+  width: 200px;
+  height: 200px;
+  border: 10px solid white;
+  border-radius: 50%;
+  background-color: white;
+}
+.analog-container {
+  /*기본적으로 */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px);
+}
+
+.analog {
+  height: 3px;
+  position: absolute; /*position:static 속성이 아닌 애를 중심으로 움직이는 포지션 */
+  top: 32%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+}
+p {
+  margin-top: 0%;
+  text-align: center;
+  color: gray;
+  font-size: 1.1rem;
+}
+.hour {
+  z-index: 2;
+  width: 28%;
+  left: 44px;
+  background-color: rgb(76, 196, 218);
+}
+.min {
+  z-index: 1;
+  width: 40%;
+  left: 20px;
+  background-color: rgb(236, 217, 152);
+}
+.sec {
+  z-index: 3;
+  width: 50%;
+  background-color: rgb(218, 76, 76);
+}

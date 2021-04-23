@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock-weather app</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- 오늘 몇월 며칠인지 나타낼 문구 넣을 헤더 -->
+    <div class="header"></div>
+    <!-- 아날로그 똑딱똑딱 시계 +그 밑의 디지털시계 -->
+    <div class="clock">
+        <div class="analog-clock">
+            <p>12</p>
+            <div class="analog-container">
+                <div class="analog hour"></div>
+                <div class="analog min"></div>
+                <div class="analog sec"></div>
+            </div>
+        </div>
+        <div class="digital-container">
+            <div class="digital_time"></div>
+            <button class="digiatal_button"> </button>
+        </div>
+    </div>
+    <!-- 달력 -->
+    <!-- 움직이는 아이콘+일반아이콘과 온도, 최고 최저 기온 습도 강수량 바람량 -->
+    <script src="clock.js"></script>
+</body>
+</html>
