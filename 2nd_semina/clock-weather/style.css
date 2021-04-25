@@ -76,12 +76,12 @@ p {
   margin-top: 0.8rem;
   margin-left: 1.55rem;
 }
-.digital_time {
+.digital-time {
   font-size: 2rem;
   text-align: center;
   color: rgb(255, 255, 255);
 }
-.digital_button {
+.digital-button {
   all: unset;
   cursor: pointer;
   font-size: 1rem;
@@ -93,7 +93,7 @@ p {
   height: fit-content;
   color: rgb(255, 255, 255);
 }
-.digital_button:hover {
+.digital-button:hover {
   cursor: pointer;
   background-color: white;
   color: rgb(226, 191, 217);

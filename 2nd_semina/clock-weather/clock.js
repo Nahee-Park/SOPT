@@ -1,8 +1,8 @@
 const analogHour = document.querySelector('.hour');
 const analogMin = document.querySelector('.min');
 const analogSec = document.querySelector('.sec');
-const digitalTime = document.querySelector('.digital_time');
-const digitalButton = document.querySelector('.digital_button');
+const digitalTime = document.querySelector('.digital-time');
+const digitalButton = document.querySelector('.digital-button');
 const header = document.querySelector('.header');
 let mode = true;
 //1. Date객체 받고
@@ -48,7 +48,7 @@ function drawDate(){
     const{year,month,day,mins,seconds} = getDate();
     let{hour}=getDate();
 
-    if(mode){
+    if(!mode){ //모드에 따라 불러오는 시간이 다름 
         if (hour === 0) hour = 12;
         if (hour >= 13) hour -= 12;
         digitalTime.innerHTML = `${ hour<10 ? `0${ hour}` : hour}:${mins<10? `0${mins}` : mins}:${seconds<10? `0${seconds}` : seconds}`;
@@ -58,20 +58,21 @@ function drawDate(){
     header.innerHTML =`Today is <span>${day} ${month}</span>, ${year}`;
 }
 
-function changeTwelvehours(event){
+function changeTwelvehours(event){ //시간 모드를 설정
     let{hour} = getDate();
     //클릭하면 상태를 바꿈 
     if(mode===true){
         mode = false;
-        digitalButton.innerText="24H";
-
-    }else{
-        mode=true;
         if (hour >= 0 && hour <= 11) { 
             digitalButton.innerText = "AM";
         } else { 
             digitalButton.innerText = "PM";
         }
+
+
+    }else{
+        mode=true;
+        digitalButton.innerText="24H";
     }
 }
 
