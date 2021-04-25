@@ -4,7 +4,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.content {
+  display: flex;
+}
 .header {
   font-size: 60px;
   font-weight: bold;
@@ -17,10 +19,8 @@ span {
   color: rgb(218, 76, 76);
 }
 
-.content {
-  margin-left: 50px;
-}
 .clock {
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,4 +97,36 @@ p {
   cursor: pointer;
   background-color: white;
   color: rgb(226, 191, 217);
+}
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border: 1px solid white; */
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.weather-top {
+  display: flex;
+  font-size: 2rem;
+}
+.weather-icon {
+  width: 12rem;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.weather-right {
+  position: relative;
+  margin-top: 3.5rem;
+  margin-right: 3rem;
+}
+.weather-first {
+  margin-bottom: 1rem;
+}
+.weather-bottom {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
