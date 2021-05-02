@@ -7,7 +7,14 @@ display:flex;
 flex-direction: column;
 align-items: center;
 margin-top: 35vh;
-form{
+img{
+    position: absolute;
+    left: 200px;
+    //글자랑 크기차이가 52px 
+}
+
+
+input{
     width: 591px;
     height: 69px;
     left: 424px;
@@ -17,15 +24,10 @@ form{
     border: 8px solid rgba(105, 105, 105, 0.5);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
     border-radius: 40px;
-    display: flex;
-    align-items: center;
-    color: #F9F9F9;
-}
-input{
-    -webkit-appearance: none;
+    /* -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
-    border-radius : 0; 
+    appearance: none; */
+    /* border-radius : 0;  */
     background: #414141;
 
     font-family: Noto Sans;
@@ -43,6 +45,7 @@ input{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 input::placeholder {
+    padding-left: 76px;
     color: #F9F9F9;
 }
 input:focus {
@@ -70,8 +73,9 @@ const SearchBar = ({getData}) => {
     return(
         <SearchBarWrap>
             <form onSubmit={submitHandler}>
-                <img src={searchIcon} />
-                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요"></input>
+                <img src={searchIcon} />    
+                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요">
+                </input>
             </form>
         </SearchBarWrap>
     );
