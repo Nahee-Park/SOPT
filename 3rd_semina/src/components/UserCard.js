@@ -1,19 +1,18 @@
-import React from 'react';
+import React from "react";
 
-const UserCard = ({userData}) => {
-    return ( //앞이 true이면 뒤는 알아서 시행 
-        <>
-                {userData ? (
+const UserCard = ({ data }) => {
+    //맨 처음엔 userData가 빈값이므로 userData가 undefined일 땐 로딩중 출력되도록
+    return (
+        data && (
             <>
-                <img src={userData.avatar_url}/>
-                <p>{userData.name}</p>
-                <p>{userData.bio}</p>
-                <p>{userData.followers}</p>
-                <p>{userData.following}</p>
-                <p>{userData.login}</p>
+            <img src={data.avatar_url} />
+            <p>{data.name}</p>
+            <p>{data.bio}</p>
+            <p>{data.followers}</p>
+            <p>{data.following}</p>
+            <p>{data.login}</p>
             </>
-        ):<>로딩중...</>}
-        </>
+        )
     );
 };
 
