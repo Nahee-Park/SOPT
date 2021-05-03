@@ -2,54 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../images/search-icon.svg';
 
-
-const SearchBarWrap = styled.div`
-position: fixed;
-form{
-    width: 591px;
-    height: 69px;
-    border: 8px solid rgba(105, 105, 105, 0.5);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    background: #414141;
-    display: flex;
-    align-items: center;
-}
-img{
-    margin-left: 24px;
-    z-index: 1;
-}
-
-
-input{
-    margin-left: 24px;
-    width: 515px;
-    height: 26px;   
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-family: Noto Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.25rem;
-    line-height: 132.5%;
-    /* or 26px */
-
-    display: flex;
-    align-items: center;
-
-    color: #F9F9F9;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-input::placeholder {
-    color: #F9F9F9;
-}
-input:focus {
-    outline: none;
-}
-`;
-
 const SearchBar = ({getData,setIsSearched}) => {
     const [userName, setUserName] = React.useState(null);
 
@@ -80,3 +32,50 @@ const SearchBar = ({getData,setIsSearched}) => {
 };
 
 export default SearchBar;
+
+const SearchBarWrap = styled.div`
+    position: fixed;
+    form{
+        width: 591px;
+        height: 69px;
+        border: 8px solid rgba(105, 105, 105, 0.5);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+        background: #414141;
+        display: flex;
+        align-items: center;
+    }
+    img{
+        margin-left: 24px;
+        z-index: 1;
+    }
+
+
+    input{
+        margin-left: 24px;
+        width: 515px;
+        height: 26px;   
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.25rem;
+        line-height: 132.5%;
+        /* or 26px */
+
+        display: flex;
+        align-items: center;
+
+        color: #F9F9F9;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    input::placeholder {
+        color: #F9F9F9;
+    }
+    input:focus {
+        outline: none;
+    }
+`;

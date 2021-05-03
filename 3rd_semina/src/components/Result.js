@@ -26,7 +26,7 @@ const Result = ({userData,setIsSearched}) => {
         case "resolved":
             setIsSearched(true);
             return <ResultStyle>
-                <UserCard className="resolved status" data={data} />;
+                <UserCard className="resolved status" data={data} />
             </ResultStyle>
         case "rejected":
             setIsSearched(false);

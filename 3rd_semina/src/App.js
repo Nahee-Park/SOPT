@@ -11,14 +11,6 @@ function App(){
     data: null,
   });
 
-  const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  `;
   const getData = async (userId) => {
     setUserData({...userData, status: "pending"});
     try{
@@ -44,5 +36,14 @@ function App(){
 }
 
 export default App; //다른 컴포넌트에서 사용하기 위해선 export해줘야 함 
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 

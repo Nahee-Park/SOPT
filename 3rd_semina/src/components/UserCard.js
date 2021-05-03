@@ -5,7 +5,57 @@ import stroke from '../images/stroke.svg';
 import styled from 'styled-components';
 
 const UserCard = ({ data }) => {
-    const UserCardWrap = styled.div`
+    return (
+        data && (
+            <UserCardWrap>
+                <div className="UserCardContainer">
+                    <div className="card-first">
+                        <img className="user-image" src={data.avatar_url} alt="profil image" />
+                        <div className="card-basic-info">
+                            <div className="basic icon-name">
+                                <img src={githubIcon} className="githubIcon"/> 
+                                <div className="user-login">{data.login}</div>
+                            </div>                          
+                            {/* <div className="basic user-name">{data.name}</div> */}
+                            <div className="basic user-bio">{data.bio}</div>
+                        </div>
+                        <div className="user-link-container" onclick="location.href='{data.html_url}';">
+                            <a
+                                className="user_link"
+                                href={data.html_url}
+                                alt=""
+                                target="_blank"
+                                rel="noreferrer"
+                                >
+                                    Go to Profile
+                            </a>
+                        </div>
+                        <img src={closeIcon} className="closeIcon" /> 
+                    </div>
+                    <div className="card-second">
+                        <div className="user user-followers">
+                            <div className="user-followers-name name">Follower</div>
+                            <div className="user-followers-data data">{data.followers}</div>
+                        </div>
+                        <div className="user user-following">
+                            <div className="user-following-name name">Following</div>
+                            <div className="user-following-data data">{data.following}</div>
+                        </div>
+                        <div className="user user-repos">
+                            <div className="user-repos-name name">Repos</div>
+                            <div className="user-repos-data data">{data.public_repos}</div>
+                        </div>
+                        <img src={stroke} className="stroke"/> 
+                    </div> 
+                </div>
+            </UserCardWrap>
+        )
+    );
+};
+
+export default UserCard;
+
+const UserCardWrap = styled.div`
     .UserCardContainer{
         width: 591px;
         height: 265px;
@@ -154,54 +204,4 @@ const UserCard = ({ data }) => {
         align-items: center;
         justify-content: center;
     }
-
-    `;
-    return (
-        data && (
-            <UserCardWrap>
-                <div className="UserCardContainer">
-                    <div className="card-first">
-                        <img className="user-image" src={data.avatar_url} alt="profil image" />
-                        <div className="card-basic-info">
-                            <div className="basic icon-name">
-                                <img src={githubIcon} className="githubIcon"/> 
-                                <div className="user-login">{data.login}</div>
-                            </div>                          
-                            {/* <div className="basic user-name">{data.name}</div> */}
-                            <div className="basic user-bio">{data.bio}</div>
-                        </div>
-                        <div className="user-link-container" onclick="location.href='{data.html_url}';">
-                            <a
-                                className="user_link"
-                                href={data.html_url}
-                                alt=""
-                                target="_blank"
-                                rel="noreferrer"
-                                >
-                                    Go to Profile
-                            </a>
-                        </div>
-                        <img src={closeIcon} className="closeIcon" /> 
-                    </div>
-                    <div className="card-second">
-                        <div className="user user-followers">
-                            <div className="user-followers-name name">Follower</div>
-                            <div className="user-followers-data data">{data.followers}</div>
-                        </div>
-                        <div className="user user-following">
-                            <div className="user-following-name name">Following</div>
-                            <div className="user-following-data data">{data.following}</div>
-                        </div>
-                        <div className="user user-repos">
-                            <div className="user-repos-name name">Repos</div>
-                            <div className="user-repos-data data">{data.public_repos}</div>
-                        </div>
-                        <img src={stroke} className="stroke"/> 
-                    </div> 
-                </div>
-            </UserCardWrap>
-        )
-    );
-};
-
-export default UserCard;
+`;
