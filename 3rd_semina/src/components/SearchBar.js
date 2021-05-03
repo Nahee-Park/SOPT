@@ -2,34 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../images/search-icon.svg';
 
+
 const SearchBarWrap = styled.div`
-display:flex;
-flex-direction: column;
-align-items: center;
-margin-top: 35vh;
+position: fixed;
+form{
+    width: 591px;
+    height: 69px;
+    border: 8px solid rgba(105, 105, 105, 0.5);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    background: #414141;
+    display: flex;
+    align-items: center;
+}
 img{
-    position: absolute;
-    left: 200px;
-    //글자랑 크기차이가 52px 
+    margin-left: 24px;
+    z-index: 1;
 }
 
 
 input{
-    width: 591px;
-    height: 69px;
-    left: 424px;
-    top: 415px;
-
-    background: #414141;
-    border: 8px solid rgba(105, 105, 105, 0.5);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    /* -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; */
-    /* border-radius : 0;  */
-    background: #414141;
-
+    margin-left: 24px;
+    width: 515px;
+    height: 26px;   
+    background-color: transparent;
+    border: none;
+    outline: none;
     font-family: Noto Sans;
     font-style: normal;
     font-weight: normal;
@@ -45,7 +43,6 @@ input{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 input::placeholder {
-    padding-left: 76px;
     color: #F9F9F9;
 }
 input:focus {
@@ -53,7 +50,7 @@ input:focus {
 }
 `;
 
-const SearchBar = ({getData}) => {
+const SearchBar = ({getData,setIsSearched}) => {
     const [userName, setUserName] = React.useState(null);
 
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
@@ -67,6 +64,7 @@ const SearchBar = ({getData}) => {
     const submitHandler = (event) => {
         event.preventDefault();
         getData(userName);
+        setIsSearched(true);
     }
 
     
@@ -82,4 +80,3 @@ const SearchBar = ({getData}) => {
 };
 
 export default SearchBar;
-

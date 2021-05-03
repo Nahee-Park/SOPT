@@ -1,14 +1,24 @@
 import React, { useState,useEffect } from "react";
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
+import styled from 'styled-components';
 import {getApi} from './lib/api'; //디폴트가 아니게 export할 때는 {}로 감싸줘야함 
 
 function App(){ 
+  const [isSearched,setIsSearched] = useState(false);
   const [userData, setUserData] = useState({
     status: "idle",
     data: null,
   });
 
+  const Container = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  `;
   const getData = async (userId) => {
     setUserData({...userData, status: "pending"});
     try{
@@ -26,10 +36,10 @@ function App(){
   // },[]);
 
   return (
-    <>
-    <SearchBar getData={getData}/>
-    <Result userData={userData}/>
-    </>
+    <Container>
+    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched}/>}
+    <Result userData={userData} setIsSearched={setIsSearched}/>
+    </Container>
   )
 }
 
