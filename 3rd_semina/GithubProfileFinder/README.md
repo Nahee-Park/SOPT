@@ -1,5 +1,5 @@
 # 🐰 Github Profile Finder 만들기
-> 🙉 [실행해보기](https://github-profile-finder-chi.vercel.app/) 
+> 🙉 [실행해보기](https://github-finder-henna.vercel.app/) 
 
 ## 기본과제
 ![github-profile-finder-basic](https://user-images.githubusercontent.com/81923229/116909368-16e71880-ac7f-11eb-83b9-bd66f471636b.gif)
