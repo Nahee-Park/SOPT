@@ -6,6 +6,7 @@ body {
 }
 .content {
   display: flex;
+  justify-content: center;
 }
 .header {
   font-size: 60px;
@@ -106,6 +107,7 @@ p {
   /* border: 1px solid white; */
   text-align: center;
   color: rgb(255, 255, 255);
+  margin-left: 3rem;
 }
 .weather-top {
   display: flex;
