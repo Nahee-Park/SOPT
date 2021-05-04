@@ -3,7 +3,7 @@ import UserCard from './UserCard';
 import styled from 'styled-components';
 
 
-const Result = ({userData,setIsSearched}) => {
+const Result = ({userData,setIsSearched,setIsClosed}) => {
     const {status,data} = userData; //구조분해할당해서 userData를 변수에 나눠받음
     const ResultStyle = styled.div`
     .status{
@@ -27,7 +27,7 @@ const Result = ({userData,setIsSearched}) => {
         case "resolved":
             setIsSearched(true);
             return <ResultStyle>
-                <UserCard className="resolved status" data={data} />
+                <UserCard className="resolved status" data={data} setIsClosed={setIsClosed} setIsSearched={setIsSearched}/>
             </ResultStyle>
         case "rejected":
             setIsSearched(false);

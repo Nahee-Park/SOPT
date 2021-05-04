@@ -4,7 +4,11 @@ import githubIcon from '../images/githubIcon.svg';
 import stroke from '../images/stroke.svg';
 import styled from 'styled-components';
 
-const UserCard = ({ data }) => {
+const UserCard = ({ data, setIsClosed, setIsSearched}) => {
+    const ClickHandeler = (event) =>{
+        setIsClosed(true);
+        setIsSearched(false);
+    }
     return (
         data && (
             <UserCardWrap>
@@ -30,7 +34,7 @@ const UserCard = ({ data }) => {
                                     Go to Profile
                             </a>
                         </div>
-                        <img src={closeIcon} className="closeIcon" /> 
+                        <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/> 
                     </div>
                     <div className="card-second">
                         <div className="user user-followers">
@@ -136,6 +140,7 @@ const UserCardWrap = styled.div`
         color: #2F2F2F;
         margin-right:26px;
         margin-top: 21px;
+        cursor: pointer;
     }
     .user-link-container{
         cursor: pointer;

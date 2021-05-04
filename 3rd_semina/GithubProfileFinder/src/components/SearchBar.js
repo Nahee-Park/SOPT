@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../images/search-icon.svg';
 
-const SearchBar = ({getData,setIsSearched}) => {
+const SearchBar = ({getData,setIsSearched,setIsClosed}) => {
     const [userName, setUserName] = React.useState(null);
 
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
@@ -17,6 +17,7 @@ const SearchBar = ({getData,setIsSearched}) => {
         event.preventDefault();
         getData(userName);
         setIsSearched(true);
+        setIsClosed(false);
     }
 
     

@@ -6,6 +6,7 @@ import {getApi} from './lib/api'; //디폴트가 아니게 export할 때는 {}�
 
 function App(){ 
   const [isSearched,setIsSearched] = useState(false);
+  const [isClosed,setIsClosed] = useState(false);
   const [userData, setUserData] = useState({
     status: "idle",
     data: null,
@@ -25,8 +26,8 @@ function App(){
 
   return (
     <Container>
-    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched}/>}
-    <Result userData={userData} setIsSearched={setIsSearched}/>
+    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed}/>}
+    {!isClosed && <Result userData={userData} setIsSearched={setIsSearched} setIsClosed={setIsClosed}/>}
     </Container>
   )
 }
