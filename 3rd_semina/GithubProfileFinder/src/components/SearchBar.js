@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import searchIcon from '../images/search-icon.svg';
 
 
-const SearchBar = ({getData,setIsSearched,setIsClosed}) => {
+const SearchBar = ({getData,setIsSearched,setIsClosed,setUserNameList,userNameList,saveUserName}) => {
     const [userName, setUserName] = useState(null);
-    const [userNameList,setUserNameList] = useState([]);
-
     
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
     const ChangeHandeler = (event) => {
@@ -14,10 +12,10 @@ const SearchBar = ({getData,setIsSearched,setIsClosed}) => {
         setUserName(event.target.value);
     }
 
-    const saveUserName= (userNameList)=>{
-        localStorage.setItem("userName",JSON.stringify(userNameList));
-        // const loadUserName= localStorage.getItem("userName");
-    }
+    // const saveUserName= (userNameList)=>{
+    //     localStorage.setItem("userName",JSON.stringify(userNameList));
+    //     // const loadUserName= localStorage.getItem("userName");
+    // }
 
     //엔터치는 순간 그 당시의 userName값을 getData로 넘김 -> getData는 부모컴포넌트의 state값을 바꿈 
     const submitHandler = (event) => {
@@ -26,8 +24,9 @@ const SearchBar = ({getData,setIsSearched,setIsClosed}) => {
         setIsSearched(true);
         setIsClosed(false);
         setUserNameList([...userNameList,userName]);
+        saveUserName(userNameList);
         // console.log("이름",userNameList);
-        saveUserName([...userNameList, userName]);
+        // saveUserName([...userNameList, userName]);
     }
 
     

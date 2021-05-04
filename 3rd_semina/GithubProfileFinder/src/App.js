@@ -11,6 +11,7 @@ function App(){
     status: "idle",
     data: null,
   });
+  const [userNameList,setUserNameList] = useState([]);
 
   const getData = async (userId) => {
     setUserData({...userData, status: "pending"});
@@ -24,9 +25,21 @@ function App(){
     }
   };
 
+  const saveUserName= (userNameList)=>{
+    const userNameSet = new Set(userNameList);
+    const userNameFilter = [...userNameSet];
+    localStorage.setItem("userName",JSON.stringify(userNameFilter));
+    getUserName();
+  }
+
+  const getUserName = () => {
+    const loadUserName= localStorage.getItem("userName");
+    console.log(loadUserName);
+  }
+
   return (
     <Container>
-    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed}/>}
+    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} setUserNameList={setUserNameList} userNameList={userNameList} saveUserName={saveUserName}/>}
     {!isClosed && <Result userData={userData} setIsSearched={setIsSearched} setIsClosed={setIsClosed}/>}
     </Container>
   )
