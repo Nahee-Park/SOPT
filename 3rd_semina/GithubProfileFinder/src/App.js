@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
 import styled from 'styled-components';
@@ -22,10 +22,6 @@ function App(){
       console.log(e);
     }
   };
-
-  // useEffect(()=>{
-  //   getData();
-  // },[]);
 
   return (
     <Container>

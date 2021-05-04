@@ -15,6 +15,7 @@ const Result = ({userData,setIsSearched}) => {
         /* or 26px */
         color: #DBDBDB;
         padding-top: 12rem;
+        transition: 1s;
     }
     `;
     switch(status){

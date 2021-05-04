@@ -63,6 +63,18 @@ const UserCardWrap = styled.div`
         border: 8px solid rgba(105, 105, 105, 0.5);
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
         border-radius: 40px;
+        animation-name: movingCard;
+        animation-duration: 1s;
+    }
+
+    @keyframes movingCard{
+        from {
+            transform: translateY(-10%);
+            opacity: 0;
+        } to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
     .card-first{
         display: flex;
@@ -191,9 +203,6 @@ const UserCardWrap = styled.div`
         align-items: center;
 
         color: #DBDBDB;
-    }
-    .user-followers-data{
-        padding-left: 
     }
     .stroke{
         position: absolute;
