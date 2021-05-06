@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import styled from 'styled-components';
 import searchIcon from '../images/search-icon.svg';
 import closeIcon from '../images/closeIcon2.svg';
@@ -43,7 +43,18 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         setIsClosed(true);
         setIsSearched(false);
     }
-    
+
+    const DeleteName = (nameList,userNameList) =>{
+        const cleanNameList = userNameList.filter((eachName)=>{
+            return eachName !== nameList
+        });
+        // console.log(cleanNameList);
+        // saveUserName(cleanNameList);
+        localStorage.setItem("userName",JSON.stringify(cleanNameList));
+        setUserNameList(cleanNameList);
+    }
+
+
     return(
         <SearchBarWrap>
             <form onSubmit={submitHandler}>
@@ -57,7 +68,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
                             <div className="historyContainer">
                                 <img src={timeIcon} className="timeIcon"/>
                                 <li className="nameHistory" onClick={()=>localStorageClick(nameList)} onChange={ChangeHandeler}>{nameList}</li>
-                                <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/>
+                                <img value={nameList} onClick={()=>DeleteName(nameList,userNameList)} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/>
                             </div>
                     </HistoryCover>
                 )}
@@ -152,12 +163,12 @@ const HistoryCover = styled.div`
     }
     li{
         list-style: none;
-        cursor: pointer;
     }
     .nameHistory{
         font-size: 1.2rem;
         width: 410px;
         color: #F9F9F9;
         padding-bottom: 7px;
+        cursor: pointer;
     }
 `;
