@@ -65,11 +65,14 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         if(hide){
             setUserHistory(false);
         }
-        console.log(hide);
     }
 
     const notHide = (event) =>{
         hide = false;
+    }
+
+    const goHide = (event) =>{
+        hide = true;
     }
 
     return(
@@ -79,9 +82,9 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
                 <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요" onClick={appearUserHistory} onBlur={hideUserHistory}>
                 </input>
             </form>
-            {userHistory && <div className="historyRec" onMouseEnter={notHide}>
+            {userHistory && <div className="historyRec" onMouseEnter={notHide} onMouseLeave={goHide}>
                 {userNameList.map((nameList)=>
-                    <HistoryCover>
+                    <HistoryCover >
                             <div className="historyContainer">
                                 <img src={timeIcon} className="timeIcon"/>
                                 <li className="nameHistory" onClick={()=>localStorageClick(nameList)} onChange={ChangeHandeler}>{nameList}</li>
