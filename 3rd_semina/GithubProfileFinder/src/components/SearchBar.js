@@ -11,6 +11,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     const [userNameList,setUserNameList] = useState(
         JSON.parse(localStorage.getItem("userName") || "[]")
     );
+    const [userHistory,setUserHistory] = useState(false);
 
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
     const ChangeHandeler = (event) => {
@@ -55,16 +56,22 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         localStorage.setItem("userName",JSON.stringify(cleanNameList));
         setUserNameList(cleanNameList);
     }
+    const appearUserHistory = (event) => {
+        setUserHistory(true);
+    }
 
+    const hideUserHistory = (event) => {
+        setUserHistory(false);
+    }
 
     return(
         <SearchBarWrap>
             <form onSubmit={submitHandler}>
                 <img src={searchIcon} />    
-                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요">
+                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요" onFocus={appearUserHistory} onBlur={hideUserHistory}>
                 </input>
             </form>
-            <div className="historyRec">
+            {userHistory && <div className="historyRec">
                 {userNameList.map((nameList)=>
                     <HistoryCover>
                             <div className="historyContainer">
@@ -74,7 +81,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
                             </div>
                     </HistoryCover>
                 )}
-            </div>
+                </div>}
         </SearchBarWrap>
     );
 };
@@ -136,7 +143,19 @@ const SearchBarWrap = styled.div`
         /* max-height: 138px; */
         box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.25);
         margin-top:70px;
+        animation-name: movingHistory;
+        animation-duration: 0.3s;
     }
+
+        @keyframes movingHistory{
+            from {
+                transform: translateY(-10%);
+                opacity: 1;
+            } to {
+                transform: translateY(0);
+                opacity: 1;
+            }   
+        }
 `;
 
 const HistoryCover = styled.div`
