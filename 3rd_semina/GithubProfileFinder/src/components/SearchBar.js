@@ -22,7 +22,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     const saveUserName= (userNameList)=>{
         const userNameSet = new Set(userNameList);
         const userNameFilter = [...userNameSet];
-        if(userNameFilter>MAX_NUM){
+        if(userNameFilter.length>MAX_NUM){
             localStorage.setItem("userName",JSON.stringify(userNameFilter.slice(-3)));
         }else{
             localStorage.setItem("userName",JSON.stringify(userNameFilter));
@@ -119,7 +119,6 @@ const SearchBarWrap = styled.div`
         display: flex;
         align-items: center;
         color: #F9F9F9;
-
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     input::placeholder {
