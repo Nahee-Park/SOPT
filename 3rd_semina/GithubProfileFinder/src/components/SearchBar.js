@@ -4,6 +4,8 @@ import searchIcon from '../images/search-icon.svg';
 import closeIcon from '../images/closeIcon2.svg';
 import timeIcon from '../images/time-icon.svg';
 
+const MAX_NUM = 3; 
+
 const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     const [userName, setUserName] = useState(null);
     const [userNameList,setUserNameList] = useState(
@@ -20,7 +22,11 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     const saveUserName= (userNameList)=>{
         const userNameSet = new Set(userNameList);
         const userNameFilter = [...userNameSet];
-        localStorage.setItem("userName",JSON.stringify(userNameFilter));
+        if(userNameFilter>MAX_NUM){
+            localStorage.setItem("userName",JSON.stringify(userNameFilter.slice(-3)));
+        }else{
+            localStorage.setItem("userName",JSON.stringify(userNameFilter));
+        }
     }
 
     //엔터치는 순간 그 당시의 userName값을 getData로 넘김 -> getData는 부모컴포넌트의 state값을 바꿈 
@@ -38,10 +44,6 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         getData(nameList);
         setIsSearched(true);
         setIsClosed(false);
-    }
-    const ClickHandeler = (event) =>{
-        setIsClosed(true);
-        setIsSearched(false);
     }
 
     const DeleteName = (nameList,userNameList) =>{

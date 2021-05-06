@@ -4,13 +4,13 @@ import githubIcon from '../images/githubIcon.svg';
 import stroke from '../images/stroke.svg';
 import styled from 'styled-components';
 
-const UserCard = ({ data, setIsClosed, setIsSearched}) => {
+const UserCard = ({children, data, setIsClosed, setIsSearched}) => {
     const ClickHandeler = (event) =>{
         setIsClosed(true);
         setIsSearched(false);
     }
     return (
-        data && (
+        data ? (
             <UserCardWrap>
                 <div className="UserCardContainer">
                     <div className="card-first">
@@ -53,11 +53,67 @@ const UserCard = ({ data, setIsClosed, setIsSearched}) => {
                     </div> 
                 </div>
             </UserCardWrap>
+        ) : (
+            <NothingCardWrap>
+                <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/> 
+                <div className="childrenContainer">
+                    <div className="children">{children}</div>
+                </div>
+            </NothingCardWrap>
         )
     );
 };
 
 export default UserCard;
+
+const NothingCardWrap = styled.div`
+        width: 591px;
+        height: 265px;
+        background: #414141;
+        border: 8px solid rgba(105, 105, 105, 0.5);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+        animation-name: movingCard;
+        animation-duration: 1s;
+
+        @keyframes movingCard{
+            from {
+                transform: translateY(-10%);
+                opacity: 0;
+            } to {
+                transform: translateY(0);
+                opacity: 1;
+            }   
+        }
+
+        .childrenContainer{
+            width: 591px;
+            height: 265px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .children{
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 132.5%;
+            /* or 26px */
+            color: #DBDBDB;
+            transition: 1s;
+        }
+        .closeIcon{
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            color: #2F2F2F;
+            margin-left:547px;
+            margin-top: 21px;
+            cursor: pointer;
+        }   
+        
+`;
 
 const UserCardWrap = styled.div`
     .UserCardContainer{

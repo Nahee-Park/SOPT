@@ -14,15 +14,14 @@ const Result = ({userData,setIsSearched,setIsClosed}) => {
         line-height: 132.5%;
         /* or 26px */
         color: #DBDBDB;
-        padding-top: 12rem;
         transition: 1s;
     }
     `;
     switch(status){
         case "pending":
-            setIsSearched(false);
+            setIsSearched(true);
             return <ResultStyle>
-                <div className="pending status">Loading...</div>;
+                <div className="pending status" data={null} setIsClosed={setIsClosed} setIsSearched={setIsSearched}>Loading...</div>;
             </ResultStyle>
         case "resolved":
             setIsSearched(true);
@@ -30,10 +29,10 @@ const Result = ({userData,setIsSearched,setIsClosed}) => {
                 <UserCard className="resolved status" data={data} setIsClosed={setIsClosed} setIsSearched={setIsSearched}/>
             </ResultStyle>
         case "rejected":
-            setIsSearched(false);
+            setIsSearched(true);
             return (
                 <ResultStyle>
-                    <div className="rejected status">User Not Found</div>
+                    <UserCard className="rejected status" data={null} setIsClosed={setIsClosed} setIsSearched={setIsSearched}>User Not Found</UserCard>
                 </ResultStyle>
             );
         case "idle":
