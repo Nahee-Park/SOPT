@@ -116,7 +116,6 @@ const SearchBarWrap = styled.div`
 
         display: flex;
         align-items: center;
-
         color: #F9F9F9;
 
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -128,17 +127,20 @@ const SearchBarWrap = styled.div`
         outline: none;
     }
     .historyRec{
+        position: fixed;
         display: flex;
         flex-direction: column;
         background-color: #414141;
         width: 560px;
+        /* max-height: 138px; */
         box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.25);
-        margin-top:-12px;
+        margin-top:70px;
     }
 `;
 
 const HistoryCover = styled.div`
     display: flex;
+    
     /* background-color: #414141;
     width: 591px; */
 
@@ -149,6 +151,7 @@ const HistoryCover = styled.div`
         align-items: center;
         justify-content: space-between;
         width: 591px;
+        overflow: hidden;
     }
     .closeIcon{
         width: 1.2rem;
