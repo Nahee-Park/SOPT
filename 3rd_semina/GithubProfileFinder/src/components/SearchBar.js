@@ -12,6 +12,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         JSON.parse(localStorage.getItem("userName") || "[]")
     );
     const [userHistory,setUserHistory] = useState(false);
+    let hide = true;
 
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
     const ChangeHandeler = (event) => {
@@ -61,17 +62,24 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     }
 
     const hideUserHistory = (event) => {
-        setUserHistory(false);
+        if(hide){
+            setUserHistory(false);
+        }
+        console.log(hide);
+    }
+
+    const notHide = (event) =>{
+        hide = false;
     }
 
     return(
         <SearchBarWrap>
             <form onSubmit={submitHandler}>
                 <img src={searchIcon} />    
-                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요" onFocus={appearUserHistory} onBlur={hideUserHistory}>
+                <input type="text" value={userName} onChange={ChangeHandeler} placeholder="Github ID를 입력해주세요" onClick={appearUserHistory} onBlur={hideUserHistory}>
                 </input>
             </form>
-            {userHistory && <div className="historyRec">
+            {userHistory && <div className="historyRec" onMouseEnter={notHide}>
                 {userNameList.map((nameList)=>
                     <HistoryCover>
                             <div className="historyContainer">
@@ -84,7 +92,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
                 </div>}
         </SearchBarWrap>
     );
-};
+}
 
 export default SearchBar;
 
