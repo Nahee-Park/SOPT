@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
 import styled from 'styled-components';
 import {getApi} from './lib/api'; //디폴트가 아니게 export할 때는 {}로 감싸줘야함 
+import {reposApi} from './lib/reposApi';
 
 function App(){ 
   const [isSearched,setIsSearched] = useState(false);
@@ -11,6 +12,7 @@ function App(){
     status: "idle",
     data: null,
   });
+  const [userReposData,setUserReposData] = useState(null);
 
   const getData = async (userId) => {
     setUserData({...userData, status: "pending"});
@@ -24,11 +26,15 @@ function App(){
     }
   };
 
+  const getReposData = async (userId) => {
+    const reposData = await reposApi(userId);
+    setUserReposData(reposData);
+  } 
 
   return (
     <Container>
-    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} userData={userData}/>}
-    {!isClosed && <Result userData={userData} setIsSearched={setIsSearched} setIsClosed={setIsClosed}/>}
+    {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} userData={userData}getReposData={getReposData} setUserReposData={setUserReposData}/>}
+    {!isClosed && <Result userData={userData} userReposData={userReposData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} />}
     </Container>
   )
 }

@@ -4,7 +4,7 @@ import githubIcon from '../images/githubIcon.svg';
 import stroke from '../images/stroke.svg';
 import styled from 'styled-components';
 
-const UserCard = ({children, data, setIsClosed, setIsSearched}) => {
+const UserCard = ({children, data, userReposData, setIsClosed, setIsSearched}) => {
     const ClickHandeler = (event) =>{
         setIsClosed(true);
         setIsSearched(false);

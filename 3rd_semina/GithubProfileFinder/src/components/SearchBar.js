@@ -6,7 +6,7 @@ import timeIcon from '../images/time-icon.svg';
 
 const MAX_NUM = 3; 
 
-const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
+const SearchBar = ({getData,setIsSearched,setIsClosed,getReposData,setUserReposData}) => {
     const [userName, setUserName] = useState(null);
     const [userNameList,setUserNameList] = useState(
         JSON.parse(localStorage.getItem("userName") || "[]")
@@ -19,6 +19,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
         // event.preventDefault();
         console.log("인풋창",event.target.value);
         setUserName(event.target.value);
+        setUserReposData(event.target.value);
     }
 
     const saveUserName= (userNameList)=>{
@@ -35,6 +36,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
     const submitHandler = (event) => {
         event.preventDefault();
         getData(userName);
+        getReposData(userName);
         setIsSearched(true);
         setIsClosed(false);
         setUserNameList([...userNameList,userName]);
@@ -44,6 +46,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,userData}) => {
 
     const localStorageClick = (nameList) =>{
         getData(nameList);
+        getReposData(userName);
         setIsSearched(true);
         setIsClosed(false);
     }
