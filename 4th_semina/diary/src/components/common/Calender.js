@@ -33,11 +33,11 @@ const Calender = ({currYear, setCurrYear, currMonth, setCurrMonth}) => {
                 onMouseLeave={(e)=>(e.target.src=RightOff)}
                 />
             </div>
-            <div className="calendar__month">
+            <CalMon>
                 {monthList.map((month)=>(
                     <div 
                     key={month}
-                    className="calendar__month--button"
+                    className="button"
                     onClick={()=>setCurrMonth(month)}
                     styled={
                         month === currMonth
@@ -47,13 +47,33 @@ const Calender = ({currYear, setCurrYear, currMonth, setCurrMonth}) => {
                         {month+1}월
                     </div>)
                   )}
-            </div>
+            </CalMon>
         </div>
         </CalendarWrap>
     );
 };
 
 export default Calender;
+
+//스타일드 컴포넌트가 안먹어서 어쩔 수 없이 분리함 :(
+const CalMon = styled.div`
+          height: 57px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          width: 1025px;
+
+          .button {
+            font-size: 18px;
+            width: 52px;
+            &:hover {
+              font-size: 22px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+          }
+`
 
 const CalendarWrap = styled.div`
       .calendar {
@@ -63,18 +83,17 @@ const CalendarWrap = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
-        &__year {
+      }
+      .calender__year{
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: flex-end;
-          height: 61px;
+          height: 61px; 
 
           &--left:hover, &--right:hover {
             cursor: pointer;
           }
-
           &--title {
             font-size: 36px;
             font-weight: bold;
@@ -82,24 +101,4 @@ const CalendarWrap = styled.div`
             line-height: 1;
           }
         }
-
-        &__month {
-          height: 57px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          width: 1025px;
-
-          &--button {
-            font-size: 18px;
-            width: 52px;
-            &:hover {
-              font-size: 22px;
-              font-weight: bold;
-              cursor: pointer;
-            }
-          }
-        }
-      }
 `;
