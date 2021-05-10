@@ -57,12 +57,12 @@ export default Calender;
 
 //스타일드 컴포넌트가 안먹어서 어쩔 수 없이 분리함 :(
 const CalMon = styled.div`
+          width: 1200px;
           height: 57px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          width: 1025px;
 
           .button {
             font-size: 18px;
