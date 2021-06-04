@@ -107,5 +107,6 @@ $main-color = #ffffff; // 변수 사용 가능
   src 폴더 밖에 data.json 파일을 생성한 후,
   다음과 같은 더미 데이터 넣기
   `npm install json-server --save-dev`로 설치
-  `npx json-server --watch data.json --port 3001`
+  `yarn add -D json-server` 가 설치 오류 더 없는듯!
+  `npx json-server --watch data.json --port 4000`
   -> React 기본 port가 3000번이기 때문에 서버는 다르게 지정
