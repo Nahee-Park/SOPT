@@ -1,58 +1,91 @@
-import React from "react";
+import React, {useEffect} from "react";
 import closeIcon from '../images/closeIcon.svg';
 import githubIcon from '../images/githubIcon.svg';
 import stroke from '../images/stroke.svg';
 import styled from 'styled-components';
 
-const UserCard = ({children, data, userReposData, setIsClosed, setIsSearched}) => {
+// const MAX_REOPOSITORY = 10;
+
+const UserCard = ({children, data, cleanReposData, setIsClosed, setIsSearched}) => {
     const ClickHandeler = (event) =>{
         setIsClosed(true);
         setIsSearched(false);
     }
+    // const cleanReposData=[];
+    // const MAX_REOPOSITORY = 10;
+    // useEffect(()=>{
+    //     console.log(userReposData);
+    //     if(userReposData!==null ){
+    //         if(userReposData.length>MAX_REOPOSITORY){
+    //             cleanReposData = userReposData.slice(-MAX_REOPOSITORY)
+    //         } else {cleanReposData = userReposData;}
+    //     }
+    // },[userReposData]);
+    // console.log(cleanReposData);
+
+    //10개 넘으면 잘라야 하므로 새롭게 배열 생성 
+    // userReposData.length>MAX_REOPOSITORY?cleanReposData = userReposData.slice(-MAX_REOPOSITORY) : cleanReposData = userReposData;
+    // console.log(cleanReposData);
+
     return (
         data ? (
-            <UserCardWrap>
-                <div className="UserCardContainer">
-                    <div className="card-first">
-                        <img className="user-image" src={data.avatar_url} alt="profil image" />
-                        <div className="card-basic-info">
-                            <div className="basic icon-name">
-                                <img src={githubIcon} className="githubIcon"/> 
-                                <div className="user-login">{data.login}</div>
-                            </div>                          
-                            {/* <div className="basic user-name">{data.name}</div> */}
-                            <div className="basic user-bio">{data.bio}</div>
+            <>
+                <UserCardWrap>
+                    <div className="UserCardContainer">
+                        <div className="card-first">
+                            <img className="user-image" src={data.avatar_url} alt="profil image" />
+                            <div className="card-basic-info">
+                                <div className="basic icon-name">
+                                    <img src={githubIcon} className="githubIcon"/> 
+                                    <div className="user-login">{data.login}</div>
+                                </div>                          
+                                {/* <div className="basic user-name">{data.name}</div> */}
+                                <div className="basic user-bio">{data.bio}</div>
+                            </div>
+                            <div className="user-link-container" onclick="location.href='{data.html_url}';">
+                                <a
+                                    className="user_link"
+                                    href={data.html_url}
+                                    alt=""
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    >
+                                        Go to Profile
+                                </a>
+                            </div>
+                            <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/> 
                         </div>
-                        <div className="user-link-container" onclick="location.href='{data.html_url}';">
-                            <a
-                                className="user_link"
-                                href={data.html_url}
-                                alt=""
-                                target="_blank"
-                                rel="noreferrer"
-                                >
-                                    Go to Profile
-                            </a>
-                        </div>
-                        <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/> 
+                        <div className="card-second">
+                            <div className="user user-followers">
+                                <div className="user-followers-name name">Follower</div>
+                                <div className="user-followers-data data">{data.followers}</div>
+                            </div>
+                            <div className="user user-following">
+                                <div className="user-following-name name">Following</div>
+                                <div className="user-following-data data">{data.following}</div>
+                            </div>
+                            <div className="user user-repos">
+                                <div className="user-repos-name name">Repos</div>
+                                <div className="user-repos-data data">{data.public_repos}</div>
+                            </div>
+                            <img src={stroke} className="stroke"/> 
+                        </div> 
                     </div>
-                    <div className="card-second">
-                        <div className="user user-followers">
-                            <div className="user-followers-name name">Follower</div>
-                            <div className="user-followers-data data">{data.followers}</div>
-                        </div>
-                        <div className="user user-following">
-                            <div className="user-following-name name">Following</div>
-                            <div className="user-following-data data">{data.following}</div>
-                        </div>
-                        <div className="user user-repos">
-                            <div className="user-repos-name name">Repos</div>
-                            <div className="user-repos-data data">{data.public_repos}</div>
-                        </div>
-                        <img src={stroke} className="stroke"/> 
-                    </div> 
-                </div>
-            </UserCardWrap>
+                </UserCardWrap>
+                <UserRepository>
+                    {cleanReposData&&cleanReposData.map((eachRepos)=>
+                        <a
+                        className="reposName"
+                        href={eachRepos.html_url}
+                        alt=""
+                        target="_blank"
+                        rel="noreferrer"
+                        >
+                            {eachRepos.name}
+                        </a>
+                    )}
+                </UserRepository>
+            </>
         ) : (
             <NothingCardWrap>
                 <img onClick={ClickHandeler} src={closeIcon} className="closeIcon" setIsClosed={setIsClosed}/> 
@@ -65,6 +98,31 @@ const UserCard = ({children, data, userReposData, setIsClosed, setIsSearched}) =
 };
 
 export default UserCard;
+
+const UserRepository = styled.div`
+    width: 715px;
+    display: flex;
+    flex-wrap: wrap;
+    .reposName{
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        background: #363636;
+        border-radius: 20px;
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 132.5%;
+        /* identical to box height, or 24px */
+/* 
+        display: flex;
+        align-items: center; */
+
+        color: #DBDBDB;
+    }
+`;
 
 const NothingCardWrap = styled.div`
         width: 591px;

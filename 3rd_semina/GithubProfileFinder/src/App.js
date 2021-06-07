@@ -13,6 +13,8 @@ function App(){
     data: null,
   });
   const [userReposData,setUserReposData] = useState(null);
+  const MAX_REOPOSITORY = 10;
+  const [cleanReposData,setCleanReposData]=useState(null);
 
   const getData = async (userId) => {
     setUserData({...userData, status: "pending"});
@@ -29,12 +31,22 @@ function App(){
   const getReposData = async (userId) => {
     const reposData = await reposApi(userId);
     setUserReposData(reposData);
+    setCleanReposData(reposData);
   } 
+  useEffect(()=>{
+    console.log(userReposData);
+    console.log(cleanReposData);
+    if(userReposData!==null ){
+      if(userReposData.length>MAX_REOPOSITORY){
+        setCleanReposData(userReposData.slice(-MAX_REOPOSITORY))
+      } 
+    }
+  },[userReposData,cleanReposData]);
 
   return (
     <Container>
     {!isSearched && <SearchBar getData={getData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} userData={userData}getReposData={getReposData} setUserReposData={setUserReposData}/>}
-    {!isClosed && <Result userData={userData} userReposData={userReposData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} />}
+    {!isClosed && <Result userData={userData} cleanReposData={cleanReposData} setIsSearched={setIsSearched} setIsClosed={setIsClosed} />}
     </Container>
   )
 }

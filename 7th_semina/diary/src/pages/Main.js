@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../components/main/Card";
+import NewCard from "../components/main/NewCard";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { userDataAtom } from "../states/atom";
+import { useHistory } from "react-router-dom";
 
-const Main = () => {
-  //userData recoil을 통해 받아옴
+const Main = ({ year, month }) => {
+  const history = useHistory();
+  //Card에서는 userData 사용, NewCard에서는 userData set->recoil atom에 대한 get, set 둘 다 필요
   const userData = useRecoilValue(userDataAtom);
+
   console.log(userData);
+
   return (
     <MainWrap>
       {userData &&
-        userData.map((data, index) => {
-          return <Card key={index} props={data} />;
+        userData[year][month].map((data, index) => {
+          return (
+            <Card
+              key={index}
+              props={data}
+              //클릭하면 diary페이지로 넘어감
+              onClickFunc={() => history.push(`/diary/${data.id}`)}
+            />
+          );
         })}
+      <NewCard
+        year={year}
+        month={month}
+        //id값은 데이터의 길이로
+        id={userData ? userData.length + 1 : 1}
+      />
     </MainWrap>
   );
 };

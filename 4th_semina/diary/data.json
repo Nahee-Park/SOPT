@@ -82,7 +82,40 @@
               "text": ""
             }
           ],
-          [],
+          [
+            {
+              "id": 1,
+              "date": 20210601,
+              "title": "다이어리 제목 어쩌고 저쩌고",
+              "image": "https://coopa-default.s3.ap-northeast-2.amazonaws.com/default_thumbnail.png",
+              "weather": "맑음",
+              "tags": [
+                "태그1",
+                "태그2"
+              ]
+            },
+            {
+              "id": 2,
+              "date": 20210602,
+              "title": "다이어리 제목 어쩌고 저쩌고",
+              "image": "https://t1.daumcdn.net/cfile/tistory/240814485574155029",
+              "weather": "흐림",
+              "tags": [
+                "태그3"
+              ]
+            },
+            {
+              "id": 3,
+              "date": 20210603,
+              "title": "다이어리 제목 어쩌고 저쩌고",
+              "image": "https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/3rWZ/image/fiYqC-m8arDti2dUPSrfAZ8wBSw.jpg",
+              "weather": "맑음",
+              "tags": [
+                "안녕~~",
+                "ㅎㅅㅎ"
+              ]
+            }
+          ],
           [],
           [],
           [],
@@ -93,4 +126,3 @@
       }
     }
   }
-  

@@ -12,14 +12,14 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,getReposData,setUserReposD
         JSON.parse(localStorage.getItem("userName") || "[]")
     );
     const [userHistory,setUserHistory] = useState(false);
+    // const [userRepos,setUserRepos] =useState(false);
     let hide = true;
 
     //입력창에 들어오는 값 하나하나 받아들임. 그 값이 타겟값이고 그 값을  userName 으로 넘겨줌 (state변수)
     const ChangeHandeler = (event) => {
         // event.preventDefault();
-        console.log("인풋창",event.target.value);
         setUserName(event.target.value);
-        setUserReposData(event.target.value);
+        // setUserReposData(event.target.value);
     }
 
     const saveUserName= (userNameList)=>{
@@ -46,7 +46,7 @@ const SearchBar = ({getData,setIsSearched,setIsClosed,getReposData,setUserReposD
 
     const localStorageClick = (nameList) =>{
         getData(nameList);
-        getReposData(userName);
+        getReposData(nameList);
         setIsSearched(true);
         setIsClosed(false);
     }

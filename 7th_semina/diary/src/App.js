@@ -26,10 +26,11 @@ function App() {
   const setUserData = useSetRecoilState(userDataAtom);
 
   //year,month 값이 바뀌면 그 year과 month에 해당하는 데이터값을 서버에서 데려옴
+  //전역변수에는 data 통으로 넣음
   useEffect(() => {
     (async () => {
       const data = await getUserData();
-      data[year] && setUserData(data[year][month]);
+      data[year] && setUserData(data);
       console.log(data);
     })();
   }, [year, month]);
@@ -54,7 +55,18 @@ function App() {
               return <Main year={year} month={month} />;
             }}
           />
-          <Route path="/diary/:id" component={Diary} />
+          {/* 읽기모드 */}
+          <Route
+            exact
+            path="/diary/:id"
+            component={() => <Diary year={year} month={month} />}
+          />
+          {/* 수정모드 */}
+          <Route
+            exact
+            path="/diary/edit/:id"
+            component={() => <Diary year={year} month={month} />}
+          />
           <Route component={() => <div>Page Not Found</div>} />
         </Switch>
       </BrowserRouter>
