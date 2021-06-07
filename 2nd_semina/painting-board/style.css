@@ -1,0 +1,81 @@
+@import "reset.css";
+body {
+  background-color: aliceblue;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px;
+}
+
+.canvas {
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls .controls__btns {
+  margin-top: 30px;
+}
+
+.controls__btns button {
+  all: unset; /*모든 디폴트 값은 리셋 시켜버림*/
+  cursor: pointer;
+  background-color: white;
+  padding: 5px 0px; /*length랑 percentage*/
+  width: 80px;
+  text-align: center; /*버튼 내부 텍스트 정렬*/
+  border-radius: 5px; /*둥근 정도 제어*/
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8); /*text요소의 색*/
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.controls__btns button:active {
+  transform: scale(
+    0.98
+  ); /*active는 활성화 한 상태일 때를 의미함 -> 여기선 버튼을 클릭하면 활성화되고, 그때 스케일이 0.98로 조정됨.*/
+}
+
+.controls .controls__colors {
+  margin-top: 40px;
+  display: flex;
+  cursor: pointer;
+}
+
+.controls__colors .controls__color {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls__range {
+  padding-top: 30px;
+}
+
+@keyframes btn-ani {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.animation {
+  animation: btn-ani 0.5s;
+}
