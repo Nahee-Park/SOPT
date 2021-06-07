@@ -16,6 +16,7 @@ const Card = ({ data, match, history, year, month }) => {
   //기본적인 diaryData를 저장하고, 새로운 값을 받아서 수정
   const [state, setState] = useState(data);
   const id = parseInt(match.params.id);
+  const lodash = require("lodash");
 
   //state에 지금 들어오는, 새로 받는 애들 받음(handleChange)
   const handleChange = (event) => {
@@ -31,15 +32,11 @@ const Card = ({ data, match, history, year, month }) => {
   //수정 handleEdit => 어떤 데이터 불러올 지
   const handleEdit = async () => {
     const index = userData[year][month].findIndex((data) => data.id === id);
-    let rawData = { ...userData }; //여기서 복사함!
-
-    //rawData객체의 프로퍼티 플래그 알아보기 위해
-    let descriptor = Object.getOwnPropertyDescriptor(rawData, "2021");
-    console.log(JSON.stringify(descriptor, null, 2));
-
-    rawData[year][month].splice(index, 1, state);
-    setUserData(rawData);
-    history.goback();
+    //깊은 복사를 통해 온전히 독립적인 수정가능한 객체 생성!
+    const newData = lodash.cloneDeep(userData);
+    newData[year][month].splice(index, 1, state);
+    setUserData(newData);
+    history.goBack();
   };
 
   //삭제 handleDelete
