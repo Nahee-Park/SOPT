@@ -35,6 +35,7 @@ const Card = ({ data, match, history, year, month }) => {
     //깊은 복사를 통해 온전히 독립적인 수정가능한 객체 생성!
     const newData = lodash.cloneDeep(userData);
     newData[year][month].splice(index, 1, state);
+    const data = await createCardData(newData);
     setUserData(newData);
     history.goBack();
   };
@@ -43,8 +44,10 @@ const Card = ({ data, match, history, year, month }) => {
   const handleDelete = async () => {
     // 해당 아이디 걸러내기
     const filteredList = userData[year][month].filter((data) => data.id !== id);
-    userData[year][month] = filteredList;
-    const data = await createCardData(userData);
+    const newData = lodash.cloneDeep(userData);
+    newData[year][month] = filteredList;
+    const data = await createCardData(newData);
+    setUserData(newData);
     history.goBack();
   };
 

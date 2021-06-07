@@ -102,7 +102,7 @@ $main-color = #ffffff; // 변수 사용 가능
 - Postman
   - [Get] => url 넣으면 보여줌
   - body 클릭 후 JSON 클릭하면 JSON 파일을 전송함
-  - [POST/PUT] 서버주소 + Bodt에 JSON data 입력 후 전송
+  - [POST/PUT] 서버주소 + Body에 JSON data 입력 후 전송
 - json-server ) JSON파일로 로컬에 연습용 서버 만들기
   src 폴더 밖에 data.json 파일을 생성한 후,
   다음과 같은 더미 데이터 넣기
