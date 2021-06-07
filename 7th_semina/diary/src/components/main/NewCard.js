@@ -15,11 +15,12 @@ const getDate = () => {
 };
 
 //새로운 카드 생성하는 창
-const NewCard = ({ year, month }) => {
+const NewCard = ({ id, year, month }) => {
   const [userData, setUserData] = useRecoilState(userDataAtom);
   const createCard = async () => {
     const cardForm = {
       date: getDate(),
+      id: id,
       title: "",
       image: "",
       weather: "",

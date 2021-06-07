@@ -38,6 +38,7 @@ const Card = ({ data, match, history, year, month }) => {
     const data = await createCardData(newData);
     setUserData(newData);
     history.goBack();
+    history.goBack();
   };
 
   //삭제 handleDelete

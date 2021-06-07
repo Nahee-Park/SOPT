@@ -30,7 +30,7 @@ const Main = ({ year, month }) => {
         year={year}
         month={month}
         //id값은 데이터의 길이로
-        id={userData ? userData.length + 1 : 1}
+        id={userData ? userData[year][month].length + 1 : 1}
       />
     </MainWrap>
   );
