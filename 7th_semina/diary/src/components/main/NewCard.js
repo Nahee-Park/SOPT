@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { createCardData } from "../../lib/api";
@@ -17,6 +17,7 @@ const getDate = () => {
 //새로운 카드 생성하는 창
 const NewCard = ({ id, year, month }) => {
   const [userData, setUserData] = useRecoilState(userDataAtom);
+  const lodash = require("lodash");
   const createCard = async () => {
     const cardForm = {
       date: getDate(),
@@ -29,13 +30,8 @@ const NewCard = ({ id, year, month }) => {
       text: "",
     };
     // newData는 궁극적으로 post할 데이터를 담을 state임!
-    const newData = {
-      ...userData,
-      [year]: {
-        ...userData[year],
-        [month]: [...userData[year][month], cardForm],
-      },
-    };
+    const newData = lodash.cloneDeep(userData);
+    newData[year][month].push(cardForm);
     const data = await createCardData(newData);
     data[year] && setUserData(newData);
   };

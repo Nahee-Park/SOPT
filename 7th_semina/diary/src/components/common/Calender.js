@@ -4,12 +4,15 @@ import LeftOn from "../../assets/left-on.svg";
 import RightOff from "../../assets/right-off.svg";
 import RightOn from "../../assets/right-on.svg";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const Calender = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
   //요소를 렌더 여부에 상관 없이 담을 수 있는 박스가 useRef()임!
   // const leftButton = React.useRef();
   // const rightButton = React.useRef();
+  const location = useLocation();
   const monthList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const isMain = location.pathname === "/" ? true : false;
   return (
     <CalendarWrap>
       <div className="calender">
@@ -18,7 +21,7 @@ const Calender = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
             className="calender__year--left"
             src={LeftOff}
             alt=""
-            onClick={() => setCurrYear(currYear - 1)}
+            onClick={() => isMain && setCurrYear(currYear - 1)}
             onMouseEnter={(e) => (e.target.src = LeftOn)}
             onMouseLeave={(e) => (e.target.src = LeftOff)}
           />
@@ -27,7 +30,7 @@ const Calender = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
             className="calender__year--right"
             src={RightOff}
             alt=""
-            onClick={() => setCurrYear(currYear + 1)}
+            onClick={() => isMain && setCurrYear(currYear + 1)}
             onMouseEnter={(e) => (e.target.src = RightOn)}
             onMouseLeave={(e) => (e.target.src = RightOff)}
           />
@@ -37,7 +40,7 @@ const Calender = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
             <div
               key={month}
               className="button"
-              onClick={() => setCurrMonth(month)}
+              onClick={() => isMain && setCurrMonth(month)}
               styled={
                 month === currMonth
                   ? { fontSize: "22px", fontWeight: "bold" }

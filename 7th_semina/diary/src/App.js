@@ -71,7 +71,6 @@ function App() {
         </Switch>
       </BrowserRouter>
       <Footer />
-      <div className="App">React App</div>
     </>
   );
 }
