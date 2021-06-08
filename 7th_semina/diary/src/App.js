@@ -31,7 +31,6 @@ function App() {
     (async () => {
       const data = await getUserData();
       data[year] && setUserData(data);
-      console.log(data);
     })();
   }, [year, month]);
 
@@ -46,7 +45,6 @@ function App() {
           setCurrMonth={setMonth}
         />
         <Title />
-        {/* Switch는 케이스 별로 나올 페이지를 제어한다*/}
         <Switch>
           <Route
             exact

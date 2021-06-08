@@ -8,10 +8,7 @@ import { useHistory } from "react-router-dom";
 
 const Main = ({ year, month }) => {
   const history = useHistory();
-  //Card에서는 userData 사용, NewCard에서는 userData set->recoil atom에 대한 get, set 둘 다 필요
   const userData = useRecoilValue(userDataAtom);
-
-  console.log(userData);
 
   return (
     <MainWrap>

@@ -1,7 +1,5 @@
 import React from "react";
 import EmptyImage from "../../assets/default-image.svg";
-// import {useRecoilValue} from 'recoil';
-// import {userDataAtom} from '../../states/atom';
 import styled from "styled-components";
 
 const getDateFormat = (date) => {
