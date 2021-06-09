@@ -64,8 +64,8 @@
             "image": "https://i.pinimg.com/736x/7f/d3/9e/7fd39efe4322caa04c6dab5cc7a25ae9.jpg",
             "weather": "맑음",
             "tags": [
-              "태그1",
-              "태그2"
+              "테그1",
+              "테그2"
             ],
             "summary": "",
             "text": ""
@@ -77,7 +77,8 @@
             "image": "https://i1.sndcdn.com/avatars-000600452151-38sfei-t500x500.jpg",
             "weather": "바람",
             "tags": [
-              "태그3"
+              "태그3",
+              "웃김"
             ],
             "summary": "ㅎㅅㅎ",
             "text": "ㅎㅎㅎ"
@@ -137,24 +138,23 @@
         ],
         [
           {
-            "date": 20210608,
+            "date": 20210609,
             "id": 1,
-            "title": "rttt",
+            "title": "오늘은 휴가 ",
             "image": "",
-            "weather": "흐림",
-            "tags": [],
-            "summary": "fds",
-            "text": "dfs"
-          },
-          {
-            "date": 20210608,
-            "id": 2,
-            "title": "1232313",
-            "image": "",
-            "weather": "맑음",
-            "tags": [],
-            "summary": "테스트 테스트",
-            "text": "우하우히"
+            "weather": "비",
+            "tags": [
+              [
+                "gg",
+                "우히우히",
+                "오히오히"
+              ],
+              "오히오히",
+              "우이윙",
+              "걱정됨"
+            ],
+            "summary": "",
+            "text": ""
           }
         ],
         [],

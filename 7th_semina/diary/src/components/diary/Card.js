@@ -19,13 +19,21 @@ const Card = ({ data, match, history, year, month }) => {
   const lodash = require("lodash");
 
   //state에 지금 들어오는, 새로 받는 애들 받음(handleChange)
-  const handleChange = (event) => {
+  const handleChange = (event, values) => {
     const name = event.target.name;
-    setState({
-      ...state,
-      // 계산된 속성명 ) name이 계산된 이후, 그곳에 event.target.value대입
-      [name]: event.target.value,
-    });
+    if (name !== "tags") {
+      setState({
+        ...state,
+        // 계산된 속성명 ) name이 계산된 이후, 그곳에 event.target.value대입
+        [name]: event.target.value,
+      });
+    } else {
+      //tags에 한해는 values값을 그대로 대입함
+      setState({
+        ...state,
+        [name]: values,
+      });
+    }
     console.log(state);
   };
 

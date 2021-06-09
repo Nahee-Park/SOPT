@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://localhost:4000",
   // 요청 1초까지만 기다리고 타임아웃!
   timeout: 1000,
 });
