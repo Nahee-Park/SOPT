@@ -49,13 +49,13 @@ export default Card;
 const CardWrap = styled.div`
   .card {
     box-sizing: border-box;
-    width: 220px;
+    min-width: 220px;
     height: 257px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
     &__image {
-      width: 220px;
+      min-width: 220px;
       height: 148px;
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
@@ -65,7 +65,7 @@ const CardWrap = styled.div`
       align-items: center;
 
       &--photo {
-        width: inherit;
+        width: 100%;
         height: inherit;
         border-top-left-radius: inherit;
         border-top-right-radius: inherit;

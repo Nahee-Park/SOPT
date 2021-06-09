@@ -93,7 +93,7 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
   const Feels = ["기쁨", "슬픔", "웃김", "걱정됨", "위로받음"];
   return (
     <>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <CardInfoWrap>
         <div className="info__photo">
           {isReadOnly ? (
@@ -250,7 +250,7 @@ const CardInfoWrap = styled.div`
       }
     }
     &__summary {
-      width: 236px;
+      width: 300px;
       height: 30px;
       box-sizing: border-box;
       border: none;
@@ -276,6 +276,6 @@ const CardInfoWrap = styled.div`
     }
   }
   .small-title {
-    width: 95px;
+    width: 70px;
   }
 `;

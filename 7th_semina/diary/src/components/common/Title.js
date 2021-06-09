@@ -16,6 +16,10 @@ const Title = ({ location }) => {
 export default withRouter(Title);
 
 const TitleWrap = styled.div`
+  /* element 간 간격이 동일하게 줄어들도록 */
+  @media (max-width: 1200px) {
+    width: 100vw;
+  }
   .title {
     width: 1200px;
     height: 92px;

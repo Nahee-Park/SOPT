@@ -50,7 +50,7 @@ export default NewCard;
 const NewCardWrap = styled.div`
   .card {
     box-sizing: border-box;
-    width: 220px;
+    min-width: 220px;
     height: 257px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;

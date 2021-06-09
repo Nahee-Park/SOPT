@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { getUserData } from "./lib/api";
 import { userDataAtom } from "./states/atom";
 import { useSetRecoilState } from "recoil";
-// import { styled } from "styled-components";
+// import styled from "styled-components";
 
 //npx json-server --watch data.json --port 4000
 
@@ -60,13 +60,17 @@ function App() {
           <Route
             exact
             path="/diary/:id"
-            component={() => <Diary year={year} month={month} />}
+            component={() => {
+              return <Diary year={year} month={month} />;
+            }}
           />
           {/* 수정모드 */}
           <Route
             exact
             path="/diary/edit/:id"
-            component={() => <Diary year={year} month={month} />}
+            component={() => {
+              return <Diary year={year} month={month} />;
+            }}
           />
           <Route component={() => <div>Page Not Found</div>} />
         </Switch>

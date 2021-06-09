@@ -25,6 +25,10 @@ const MainHeader = ({ history }) => {
 export default withRouter(MainHeader);
 
 const MainHeaderWrap = styled.div`
+  /* element 간 간격이 동일하게 줄어들도록 */
+  @media (max-width: 1200px) {
+    width: 100vw;
+  }
   .header {
     width: 1200px;
     /* element 간 간격이 동일하게 줄어들도록 */
@@ -52,6 +56,10 @@ const MainHeaderWrap = styled.div`
     }
 
     &__hr {
+      /* element 간 간격이 동일하게 줄어들도록 */
+      @media (max-width: 1200px) {
+        width: 100vw;
+      }
       width: 1200px;
       height: 13px;
       background: linear-gradient(90deg, white, #cea0e3);
