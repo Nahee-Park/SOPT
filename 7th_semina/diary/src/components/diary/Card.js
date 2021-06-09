@@ -21,20 +21,19 @@ const Card = ({ data, match, history, year, month }) => {
   //state에 지금 들어오는, 새로 받는 애들 받음(handleChange)
   const handleChange = (event, values) => {
     const name = event.target.name;
-    if (name !== "tags") {
+    if (name === "tags" || name === "image") {
+      //tags와 image는 values값을 그대로 대입함
+      setState({
+        ...state,
+        [name]: values,
+      });
+    } else {
       setState({
         ...state,
         // 계산된 속성명 ) name이 계산된 이후, 그곳에 event.target.value대입
         [name]: event.target.value,
       });
-    } else {
-      //tags에 한해는 values값을 그대로 대입함
-      setState({
-        ...state,
-        [name]: values,
-      });
     }
-    console.log(state);
   };
 
   //수정 handleEdit => 어떤 데이터 불러올 지

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import EmptyImage from "../../assets/default-image.svg";
 import FormControl from "@material-ui/core/FormControl";
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 const useStyles2 = makeStyles((theme) => ({
   root: {
-    width: 350,
+    width: 300,
     "& > * + *": {
       marginTop: theme.spacing(3),
     },
@@ -59,11 +59,35 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
   const classes = useStyles();
   const classes2 = useStyles2();
   const { image, date, weather, tags, summary } = data;
+  const [userImg, setUserImg] = useState(null);
 
   const onTagsChange = (e, values) => {
     e.target.name = "tags";
     console.log("저장될 value값", values);
     handleChange(e, values);
+  };
+
+  // 이미지가 들어오면 처리
+  const handleChangeFile = (event) => {
+    let reader = new FileReader();
+    const data = event.target.files[0]; // 받아온 이미지는 여기에 File 객체로 저장됩니다
+
+    if (data) {
+      reader.readAsDataURL(data);
+    }
+
+    console.log("업로드한 데이터 뭐가 있는지", data);
+    event.target.name = "image";
+
+    reader.onloadend = () => {
+      setUserImg({
+        file: data, // 서버로 전송할 File 객체입니다
+        preview: reader.result, // 여기서 reader.result는 미리보기 이미지를 보여줍니다
+      });
+      handleChange(event, reader.result);
+      console.log("values값", reader.result);
+    };
+    console.log("set된 userImg 뭔지", userImg);
   };
 
   const Feels = ["기쁨", "슬픔", "웃김", "걱정됨", "위로받음"];
@@ -72,19 +96,28 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
       <CssBaseline />
       <CardInfoWrap>
         <div className="info__photo">
-          <img
-            src={image ? image : EmptyImage}
-            width={image && "210px"}
-            height={image && "210px"}
-            alt=""
-          />
+          {isReadOnly ? (
+            <img
+              src={image ? image : EmptyImage}
+              width={image && "210px"}
+              height={image && "210px"}
+              alt=""
+            />
+          ) : (
+            <input
+              type="file"
+              name="ImageUpload"
+              accept="image/*"
+              onChange={handleChangeFile}
+            />
+          )}
         </div>
         <div className="info__data-wrap">
           <p className="info__date">
-            <span>날짜</span>
+            <span className="small-title">날짜</span>
             {getDateFormat(date)}
           </p>
-          <span>날씨</span>
+          <span className="small-title">날씨</span>
           {isReadOnly ? (
             <input
               type="text"
@@ -114,7 +147,7 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
             </FormControl>
           )}
           <div className="info__tags">
-            <span>태그</span>
+            <span className="small-title">태그</span>
             {isReadOnly ? (
               tags.length > 0 ? (
                 tags.map((tag, index) => {
@@ -141,8 +174,6 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
                 defaultValue={tags}
                 onChange={onTagsChange}
                 freeSolo
-                //여기서 value는 입력된 모든 테그배열
-                //getTagProps: A tag props getter.
                 renderTags={(value, getTagProps) =>
                   value.map((option, index) => (
                     <Chip
@@ -164,7 +195,7 @@ const CardInfo = ({ data, isReadOnly, handleChange }) => {
               />
             )}
           </div>
-          <span>한 줄 요약</span>
+          <span className="small-title">한 줄 요약</span>
           <input
             className="info__summary"
             type="text"
@@ -197,7 +228,7 @@ const CardInfoWrap = styled.div`
       justify-content: center;
     }
     &__data-wrap {
-      margin-left: 50px;
+      margin-left: 40px;
     }
     &__date {
       margin: 15px auto 25px auto;
@@ -243,5 +274,8 @@ const CardInfoWrap = styled.div`
     &::placeholder {
       color: #c4c4c4;
     }
+  }
+  .small-title {
+    width: 95px;
   }
 `;

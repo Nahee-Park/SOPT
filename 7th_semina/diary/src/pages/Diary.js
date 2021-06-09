@@ -12,11 +12,7 @@ const Diary = ({ year, month, match }) => {
   if (!data) return <h1>no data</h1>;
   const diaryData = data[year][month].find((el) => el.id === parseInt(id));
 
-  return (
-    <>
-      <Card data={diaryData} year={year} month={month} />
-    </>
-  );
+  return <Card data={diaryData} year={year} month={month} />;
 };
 
 export default withRouter(Diary);

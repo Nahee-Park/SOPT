@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 import { getUserData } from "./lib/api";
 import { userDataAtom } from "./states/atom";
 import { useSetRecoilState } from "recoil";
+// import { styled } from "styled-components";
+
+//npx json-server --watch data.json --port 4000
 
 //디폴트 값으로 현재의 년,월을 저장
 const getCurrDate = () => {
