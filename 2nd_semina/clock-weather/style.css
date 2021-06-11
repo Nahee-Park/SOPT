@@ -113,12 +113,20 @@ p {
   display: flex;
   font-size: 2rem;
 }
-.weather-icon {
+#weather_icon {
+  z-index: 1;
+  margin-bottom: 30px;
+}
+/* .weather-icon {
   width: 12rem;
 }
 img {
   width: 100%;
   height: auto;
+} */
+
+#weather_icon {
+  margin-bottom: 30px;
 }
 .weather-right {
   position: relative;
