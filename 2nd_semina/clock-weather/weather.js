@@ -2,6 +2,7 @@ const weatherTemp = document.querySelector(".weather-temperature");
 const weatherStatus = document.querySelector(".weather-status");
 const weatherFirst = document.querySelector(".weather-first");
 const weatherOthers = document.querySelector(".weather-others");
+const body = document.querySelector("body");
 
 const API_KEY = "150ea3fb9fa521e207d6c1c7626a7f1e";
 //API) 다른 웹사이트로부터 데이터 가져올 수 있고, 머신들끼리 소통 가능.
@@ -59,6 +60,16 @@ function drawIcon(id) {
 function drawWeather(weather) {
   weatherTemp.innerHTML = `${weather.temp} °C`;
   weatherStatus.innerHTML = `${weather.main}`;
+  //맑은 날엔 파란색 배경으로
+  if (weather.main == "Snow") {
+    body.style.backgroundColor = "rgb(150, 194, 230)";
+  } else if (
+    weather.main == "Rain" ||
+    weather.main == "Clouds" ||
+    weather.main == "Thunderstorm"
+  ) {
+    body.style.backgroundColor = "rgb(152,153,158)";
+  }
   weatherFirst.innerHTML = `<span>Feels:</span> ${weather.tempFeel} °C &nbsp;&nbsp;
     <span>Min:</span> ${weather.tempMin} °C &nbsp;&nbsp;
     <span>Max:</span> ${weather.tempMax} °C`;
