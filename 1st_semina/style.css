@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap");
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.panels {
+  display: flex;
+  height: 100%;
+}
+.panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel:hover {
+  cursor: pointer;
+}
+
+.panel:nth-child(1) {
+  background: linear-gradient(90deg, #d8f5ff 0%, #00ddff 100%);
+}
+.panel:nth-child(2) {
+  background: linear-gradient(90deg, #00ddff 0%, #60a0ff 100%);
+}
+.panel:nth-child(3) {
+  background: linear-gradient(90deg, #60a0ff 0%, #8a77ff 100%);
+}
+.panel:nth-child(4) {
+  background: linear-gradient(90deg, #8a77ff 0%, #9400d3 100%);
+}
+
+p {
+  text-align: center;
+  font-family: "Noto Serif KR", serif;
+  text-align: center;
+  color: #ffffff;
+  transition: transform 1.2s;
+  font-size: 30px;
+  height: 60px;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+}
+p:hover {
+  animation-name: glow;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes glow {
+  0% {
+  }
+  20% {
+    text-shadow: 0 0 20px lightyellow, 0 0 70px white;
+  }
+  100% {
+    text-shadow: 0 0 1px lightyellow;
+  }
+}
+.panel p:nth-child(2) {
+  font-size: 50px;
+}
+.panel p:nth-child(1) {
+  transform: translateY(-200%);
+}
+.panel p:nth-child(3) {
+  transform: translateY(300%);
+  margin-bottom: 100px;
+}
+.panel.open p:nth-child(1) {
+  transform: translateY(0);
+}
+.panel.open p:nth-child(3) {
+  transform: translateY(0);
+}
