@@ -9,7 +9,7 @@
 3. 그 이후에 Result.js가 실행되며 결과값으로 Github Profile을 보여줌.
 
 ## 심화과제 구현 화면
-![GithubProfile](https://user-images.githubusercontent.com/81923229/121714919-4bb97b80-cb19-11eb-9f6e-732443f772e8.gif)
+![Githibprogfile2](https://user-images.githubusercontent.com/81923229/121715521-f29e1780-cb19-11eb-829c-f5f0de0aac5b.gif)
 
 1. localStorage를 이용해 검색 기록 구현 (최대 3개까지 저장)
 2. 우측 상단의 X 버튼 누르면 홈화면으로 돌아가는 기능 추가 
